@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.6.0</version>
+		<version>2.7.18</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 
@@ -359,7 +359,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<commons-collections4.version>4.1</commons-collections4.version>
-		<disruptor.version>3.4.3</disruptor.version>
+		<disruptor.version>3.4.4</disruptor.version>
 		<maven.version>3.0</maven.version>
        	<maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
         <maven-jar-plugin.version>3.1.1</maven-jar-plugin.version>
@@ -371,6 +371,13 @@
 
 	<dependencies>
 
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.13.2</version>
+			<scope>test</scope>
+		</dependency>
+
 		<!-- Java Servlet API -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
@@ -381,6 +388,7 @@
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
+			<optional>true</optional>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-simple -->
 		<dependency>
@@ -404,8 +412,9 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-log4j2</artifactId>
+			<optional>true</optional>
 		</dependency>
-		<!-- Spring Boot Test 依赖 -->
+<!--		 Spring Boot Test 依赖 -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>

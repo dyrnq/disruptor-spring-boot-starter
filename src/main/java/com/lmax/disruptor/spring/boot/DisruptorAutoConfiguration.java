@@ -81,9 +81,9 @@ public class DisruptorAutoConfiguration implements ApplicationContextAware {
 		return WaitStrategys.YIELDING_WAIT;
 	}
 
-	@Bean
-	@ConditionalOnMissingBean
-	public ThreadFactory threadFactory() {
+	@Bean()
+	@ConditionalOnMissingBean(name="disruptorThreadFactory")
+	public ThreadFactory disruptorThreadFactory() {
 		return new DisruptorEventThreadFactory();
 	}
 
@@ -244,6 +244,7 @@ public class DisruptorAutoConfiguration implements ApplicationContextAware {
 	public Disruptor<DisruptorEvent> disruptor(
 			DisruptorProperties properties, 
 			WaitStrategy waitStrategy,
+			@Qualifier("disruptorThreadFactory")
 			ThreadFactory threadFactory, 
 			EventFactory<DisruptorEvent> eventFactory,
 			@Qualifier("disruptorEventHandlers") 

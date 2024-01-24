@@ -6,14 +6,14 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.7.18</version>
+		<version>3.2.2</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 
 	<groupId>com.github.hiwepy</groupId>
 	<artifactId>disruptor-spring-boot-starter</artifactId>
 	<description>Spring Boot Starter For Disruptor</description>
-	<version>2.0.1-SNAPSHOT</version>
+	<version>2.0.1-SNAPSHOT-spring-boot3</version>
 	<name>${project.groupId}:${project.artifactId}</name>
 	<url>https://github.com/hiwepy/${project.artifactId}</url>
 	<packaging>jar</packaging>
@@ -379,11 +379,11 @@
 		</dependency>
 
 		<!-- Java Servlet API -->
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>javax.servlet-api</artifactId>
-			<optional>true</optional>
-		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>javax.servlet</groupId>-->
+<!--			<artifactId>javax.servlet-api</artifactId>-->
+<!--			<optional>true</optional>-->
+<!--		</dependency>-->
 
 		<dependency>
 			<groupId>org.slf4j</groupId>

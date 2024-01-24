@@ -15,8 +15,8 @@
  */
 package com.lmax.disruptor.spring.boot.context;
 
-import java.security.AccessControlContext;
-import java.security.AccessController;
+//import java.security.AccessControlContext;
+//import java.security.AccessController;
 import java.security.PrivilegedAction;
 
 import org.springframework.beans.BeansException;
@@ -24,7 +24,7 @@ import org.springframework.beans.factory.Aware;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
-import org.springframework.beans.factory.support.SecurityContextProvider;
+//import org.springframework.beans.factory.support.SecurityContextProvider;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 
@@ -36,7 +36,7 @@ public class DisruptorEventAwareProcessor implements ApplicationContextAware ,Be
 	private ApplicationContext applicationContext;
 	
 	/** Security context used when running with a SecurityManager */
-	private SecurityContextProvider securityContextProvider;
+//	private SecurityContextProvider securityContextProvider;
 	
 	/**
 	 * Set the security context provider for this bean factory. If a security manager
@@ -44,27 +44,27 @@ public class DisruptorEventAwareProcessor implements ApplicationContextAware ,Be
 	 * of the provided security context.
 	 * @param securityProvider {@link SecurityContextProvider} instance
 	 */
-	public void setSecurityContextProvider(SecurityContextProvider securityProvider) {
-		this.securityContextProvider = securityProvider;
-	}
+//	public void setSecurityContextProvider(SecurityContextProvider securityProvider) {
+//		this.securityContextProvider = securityProvider;
+//	}
 
 	/**
 	 * Delegate the creation of the access control context to the
 	 * {@link #setSecurityContextProvider SecurityContextProvider}.
 	 * @return {@link AccessControlContext} instance
 	 */
-	public AccessControlContext getAccessControlContext() {
-		if(this.securityContextProvider != null){
-			return  this.securityContextProvider.getAccessControlContext();
-		}
-
-		if(this.disruptorContext.getApplicationContext().getAutowireCapableBeanFactory() instanceof ConfigurableBeanFactory){
-			ConfigurableBeanFactory beanFactory  =  (ConfigurableBeanFactory) this.disruptorContext.getApplicationContext().getAutowireCapableBeanFactory() ;
-			return beanFactory.getAccessControlContext();
-		}
-		
-		return AccessController.getContext();
-	}
+//	public AccessControlContext getAccessControlContext() {
+//		if(this.securityContextProvider != null){
+//			return  this.securityContextProvider.getAccessControlContext();
+//		}
+//
+//		if(this.disruptorContext.getApplicationContext().getAutowireCapableBeanFactory() instanceof ConfigurableBeanFactory){
+//			ConfigurableBeanFactory beanFactory  =  (ConfigurableBeanFactory) this.disruptorContext.getApplicationContext().getAutowireCapableBeanFactory() ;
+//			return beanFactory.getAccessControlContext();
+//		}
+//
+//		return AccessController.getContext();
+//	}
 	
 	/**
 	 * Create a new ApplicationContextAwareProcessor for the given context.
@@ -74,23 +74,23 @@ public class DisruptorEventAwareProcessor implements ApplicationContextAware ,Be
 	
 	@Override
 	public Object postProcessBeforeInitialization(final Object bean, String beanName) throws BeansException {
-		AccessControlContext acc = null;
-		if (System.getSecurityManager() != null && (bean instanceof DisruptorEventPublisherAware )) {
-			acc = getAccessControlContext();
-		}
-		if (acc != null) {
-			AccessController.doPrivileged(new PrivilegedAction<Object>() {
-				@Override
-				public Object run() {
-					invokeAwareInterfaces(bean);
-					return null;
-				}
-			}, acc);
-		}
-		else {
-			invokeAwareInterfaces(bean);
-		}
-
+//		AccessControlContext acc = null;
+//		if (System.getSecurityManager() != null && (bean instanceof DisruptorEventPublisherAware )) {
+//			acc = getAccessControlContext();
+//		}
+//		if (acc != null) {
+//			AccessController.doPrivileged(new PrivilegedAction<Object>() {
+//				@Override
+//				public Object run() {
+//					invokeAwareInterfaces(bean);
+//					return null;
+//				}
+//			}, acc);
+//		}
+//		else {
+//			invokeAwareInterfaces(bean);
+//		}
+		invokeAwareInterfaces(bean);
 		return bean;
 	}
 	
